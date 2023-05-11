@@ -1,13 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import useFetch from '../../hooks/useFetch';
 
 export const Home = () => {
   const {data,loading,error} = useFetch('https://fakestoreapi.com/products');
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(storedCartItems);
+  }, []);
+
+
+  const handleAddToCart = (product) => {
+      //alert(product);
+      console.log(product)
+    //   const updatedCartItems = [...cartItems, product];
+    //   setCartItems(updatedCartItems);
+    //   localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    };
+
   return (
 
     <Layout>
-      <div class="container for-you">
+      <div className="container for-you">
                 <div className="heading heading-flex mb-3">
                     <div className="heading-left">
                         <h2 className="title">Recommendation For You</h2>
@@ -34,7 +50,7 @@ export const Home = () => {
                                  </div>
 
                                  <div className="product-action">
-                                     <a href="#" className="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                     <a href="#" className="btn-product btn-cart" id={item.id} title={item.title} image={item.image} price={item.price} onClick={handleAddToCart(item)}><span>add to cart</span></a>
                                      <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                                  </div>
                              </figure>
