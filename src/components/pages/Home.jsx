@@ -1,6 +1,7 @@
 import React, { useEffect , useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import useFetch from '../../hooks/useFetch';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const {data,loading,error} = useFetch('https://fakestoreapi.com/products');
@@ -59,7 +60,7 @@ export const Home = () => {
                                  <div className="product-cat">
                                      <a href="#">Headphones</a>
                                  </div>
-                                 <h3 className="product-title"><a href="product.html">{item.title}</a></h3>
+                                 <h3 className="product-title"><Link to={'/product-details/'+item.id} >{item.title}</Link></h3>
                                  <div className="product-price">
                                      <span className="new-price">${item.price}</span>
                                      <span className="old-price">Was $349.99</span>
