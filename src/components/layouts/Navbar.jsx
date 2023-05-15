@@ -1,60 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch';
+import { Link } from 'react-router-dom';
+import { MiniCart } from '../parts/MiniCart';
 
 export const Navbar = () => {
 
-    const [cartItems, setCartItems] = useState([]);
-
-    useEffect(() => {
-      const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(storedCartItems);
-      console.log(cartItems);
-    }, []);
-
-
-    const Cart = () => {
-        return (
-            <div className="dropdown-menu dropdown-menu-right">
-            <div className="dropdown-cart-products">
-                {cartItems.map((items)=>(
-                <div className="product">
-                    <div className="product-cart-details">
-                        <h4 className="product-title">
-                            <a href="product.html">{items.title}</a>
-                        </h4>
-    
-                        <span className="cart-product-info">
-                            <span className="cart-product-qty">1</span>
-                            x ${items.price}
-                        </span>
-                    </div>
-    
-                    <figure className="product-image-container">
-                        <a href="product.html" className="product-image">
-                            <img src={items.image} alt="product"/>
-                        </a>
-                    </figure>
-                    <a href="#" className="btn-remove" title="Remove Product"><i className="icon-close"></i></a>
-                </div>
-                 ))}
-    
-            </div>
-    
-            <div className="dropdown-cart-total">
-                <span>Total</span>
-    
-                <span className="cart-total-price">$160.00</span>
-            </div>
-    
-            <div className="dropdown-cart-action">
-                <a href="cart.html" className="btn btn-primary">View Cart</a>
-                <a href="checkout.html" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></a>
-            </div>
-        </div>
-        );
-      }
-
-
+   
     const {data, loading ,error} = useFetch("https://fakestoreapi.com/products/categories");
 
 
@@ -99,7 +50,7 @@ export const Navbar = () => {
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    <li><Link to={'/login'} >Sign in / Sign up</Link></li>
                                 </ul>
                             </li>
                         </ul>
@@ -176,12 +127,12 @@ export const Navbar = () => {
                             <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div className="icon">
                                     <i className="icon-shopping-cart"></i>
-                                    <span className="cart-count">2</span>
+                                    {/* <span className="cart-count">{cartItems.length ?? 0}</span> */}
                                 </div>
                                 <p>Cart</p>
                             </a>
 
-                           <Cart/>
+                           <MiniCart/>
                         </div>
                     </div>
                 </div>
