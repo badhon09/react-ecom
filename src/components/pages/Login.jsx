@@ -3,6 +3,7 @@ import { Layout } from '../layouts/Layout'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
+import { toast , ToastContainer} from 'react-toastify';
 
 export const Login = () => {
 
@@ -33,9 +34,12 @@ export const Login = () => {
      // console.log(res.data);
      
       if(res.data){
-
+        toast.success("Login Success !", {
+          position: toast.POSITION.TOP_CENTER
+        });
         dispatch({type:"LOGIN_SUCCESS", payload:res.data})
         navigate("/");
+        
     
       }else{
 
@@ -43,6 +47,9 @@ export const Login = () => {
           type:"LOGIN_FAILURE",
           payload : {message: "you are not allowed"}
         })
+        toast.error("Login Failed !", {
+          position: toast.POSITION.TOP_LEFT
+        });
       }
 
     }catch(err){

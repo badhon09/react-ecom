@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { MiniCart } from './MiniCart';
 
 export const Product = (item) => {
 
@@ -16,7 +19,10 @@ export const Product = (item) => {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         cartItems.push(product);
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        //setCartItems(cartItems)
+        toast.success("Success Notification !", {
+            position: toast.POSITION.TOP_CENTER
+        });        //setCartItems(cartItems)
+        <MiniCart/>
     }
 
    
@@ -66,6 +72,6 @@ export const Product = (item) => {
                                  </div>
                              </div>
                          </div>
-                     </div></>
+                     </div><ToastContainer /></>
   )
 }

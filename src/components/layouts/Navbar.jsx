@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { MiniCart } from '../parts/MiniCart';
+import { ToastContainer } from 'react-toastify';
 
 export const Navbar = () => {
 
@@ -20,7 +21,7 @@ export const Navbar = () => {
                     <div className="header-left">
                         <a href="tel:#"><i className="icon-phone"></i>Call: +0123 456 789</a>
                     </div>
-
+                    <ToastContainer/>
                     <div className="header-right">
 
                         <ul className="top-menu">
