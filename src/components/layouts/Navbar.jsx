@@ -29,7 +29,7 @@ export const Navbar = () => {
                                 <a href="#">Links</a>
                                 <ul>
                                     <li>
-                                        <div className="header-dropdown">
+                                        {/* <div className="header-dropdown">
                                             <a href="#">USD</a>
                                             <div className="header-menu">
                                                 <ul>
@@ -37,10 +37,10 @@ export const Navbar = () => {
                                                     <li><a href="#">Usd</a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </li>
                                     <li>
-                                        <div className="header-dropdown">
+                                        {/* <div className="header-dropdown">
                                             <a href="#">English</a>
                                             <div className="header-menu">
                                                 <ul>
@@ -49,7 +49,7 @@ export const Navbar = () => {
                                                     <li><a href="#">Spanish</a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </li>
                                     <li><Link to={'/login'} >Sign in / Sign up</Link></li>
                                 </ul>
@@ -68,8 +68,8 @@ export const Navbar = () => {
                             <i className="icon-bars"></i>
                         </button>
                         
-                        <a href="index.html" className="logo">
-                            <img src="assets/images/demos/demo-4/logo.png" alt="Molla Logo" width="105" height="25"/>
+                        <a href="/" className="logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Molla Logo" width="105" height="25"/>
                         </a>
                     </div>
 
@@ -88,12 +88,12 @@ export const Navbar = () => {
 
                     <div className="header-right">
                         <div className="dropdown compare-dropdown">
-                            <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                            {/* <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                                 <div className="icon">
                                     <i className="icon-random"></i>
                                 </div>
                                 <p>Compare</p>
-                            </a>
+                            </a> */}
 
                             <div className="dropdown-menu dropdown-menu-right">
                                 <ul className="compare-products">
@@ -107,14 +107,14 @@ export const Navbar = () => {
                                     </li>
                                 </ul>
 
-                                <div className="compare-actions">
+                                {/* <div className="compare-actions">
                                     <a href="#" className="action-link">Clear All</a>
                                     <a href="#" className="btn btn-outline-primary-2"><span>Compare</span><i className="icon-long-arrow-right"></i></a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
 
-                        <div className="wishlist">
+                        {/* <div className="wishlist">
                             <a href="wishlist.html" title="Wishlist">
                                 <div className="icon">
                                     <i className="icon-heart-o"></i>
@@ -122,7 +122,7 @@ export const Navbar = () => {
                                 </div>
                                 <p>Wishlist</p>
                             </a>
-                        </div>
+                        </div> */}
 
                         <div className="dropdown cart-dropdown">
                             <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">

@@ -24,7 +24,7 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
-        	<div className="footer-middle">
+        	{/* <div className="footer-middle">
 	            <div className="container">
 	            	<div className="row">
 	            		<div className="col-sm-6 col-lg-3">
@@ -59,7 +59,7 @@ export const Footer = () => {
 	            		
 	            	</div>
 	            </div>
-	        </div>
+	        </div> */}
 
 	        <div className="footer-bottom">
 	        	<div className="container">
