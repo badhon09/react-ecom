@@ -151,8 +151,9 @@ export const Navbar = () => {
                                 <nav className="side-nav">
                                     <ul className="menu-vertical sf-arrows">
                                     {data.map(item => (
-                                        <li className="item-lead" key={item}><a href="#">{item}</a></li>
+                                        <li className="item-lead" key={item}><Link to={'/all-products/'+item}>{item}</Link></li>
                                     ))}
+                                    <li className="item-lead"><Link to={"/all-products"}>All Products</Link></li>
                                     </ul>
                                 </nav>
                             </div>
