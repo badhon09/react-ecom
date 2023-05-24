@@ -6,6 +6,7 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import { Checkout } from "./components/pages/Checkout";
 import { AllProducts } from "./components/pages/AllProducts";
+import { Cart } from "./components/pages/Cart";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
       <Route path="/product-details/:id" element={<ProductDetails/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/all-products/:id?" element={<AllProducts/>} />
+      <Route path="/cart" element={<Cart/>} />
       <Route path="/checkout" element={<ProtectedRoute><Checkout/></ProtectedRoute>} />
     
      

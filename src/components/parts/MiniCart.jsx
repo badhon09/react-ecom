@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export const MiniCart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -13,8 +14,8 @@ export const MiniCart = () => {
     <div className="dropdown-menu dropdown-menu-right">
     <div className="dropdown-cart-products">
         {cartItems.map((items)=>(
-        <div className="product">
-            <div className="product-cart-details">
+        <div className="product" key={items.id}>
+            <div className="product-cart-details" key={items.id}>
                 <h4 className="product-title">
                     <a href="product.html">{items.title}</a>
                 </h4>
@@ -43,8 +44,8 @@ export const MiniCart = () => {
     </div>
 
     <div className="dropdown-cart-action">
-        <a href="cart.html" className="btn btn-primary">View Cart</a>
-        <a href="checkout.html" className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></a>
+        <Link to={'/cart'} className="btn btn-primary">View Cart</Link>
+        <Link to={'/checkout'} className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></Link>
     </div>
 </div>
   )

@@ -23,27 +23,15 @@ export const Products = (item) => {
             />
           </a>
           <div className="product-action-vertical">
-            <a
-              href="#"
-              className="btn-product-icon btn-wishlist btn-expandable"
-
-            >
-              <span>add to wishlist</span>
-            </a>
-            <a
-              href="popup/quickView.html"
+      
+            <Link
+              to={'/product-details/'+item.id} 
               className="btn-product-icon btn-quickview"
               title="Quick view"
             >
               <span>Quick view</span>
-            </a>
-            <a
-              href="#"
-              className="btn-product-icon btn-compare"
-              title="Compare"
-            >
-              <span> ssss </span>
-            </a>
+            </Link>
+           
           </div>
           {/* End .product-action-vertical */}
           <div className="product-action">
@@ -76,21 +64,7 @@ export const Products = (item) => {
             <span className="ratings-text">( 0 Reviews )</span>
           </div>
           {/* End .rating-container */}
-          <div className="product-nav product-nav-thumbs">
-            {/* <a href="#" className="active">
-              <img
-                src="assets/images/products/product-5-thumb.jpg"
-                alt="product desc"
-              />
-            </a>
-            <a href="#">
-              <img
-                src="assets/images/products/product-5-2-thumb.jpg"
-                alt="product desc"
-              />
-            </a> */}
-          </div>
-          {/* End .product-nav */}
+          
         </div>
         {/* End .product-body */}
       </div>
