@@ -3,6 +3,7 @@ import { Layout } from '../layouts/Layout'
 import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { Product } from '../parts/Product';
+import { Products } from '../parts/Products';
 
 export const Home = () => {
   const {data,loading,error} = useFetch('https://fakestoreapi.com/products');
@@ -238,10 +239,11 @@ export const Home = () => {
 
                 <div className="products">
                     <div className="row justify-content-center">
-                      {data.map(item => (
+                      <Products/>
+                      {/* {data.map(item => (
                          <Product item={item}/>
 
-                      ))}
+                      ))} */}
 
                     </div>
                 </div>

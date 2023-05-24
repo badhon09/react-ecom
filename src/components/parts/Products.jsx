@@ -17,6 +17,7 @@ export const Products = (item) => {
         <figure className="product-media">
           <a href="product.html">
             <img
+            style={{ height: "250px" }} 
               src={item.image}
               alt="Product image"
               className="product-image"

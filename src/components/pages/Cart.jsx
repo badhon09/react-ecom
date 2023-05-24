@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import { Link } from 'react-router-dom';
+import { isItemInCart } from '../parts/addToCart';
 
 export const Cart = () => {
 
@@ -22,6 +23,12 @@ export const Cart = () => {
       });
     });
   };
+
+  const removeProduct = (title) => {
+    if(isItemInCart(title)){
+
+    }
+  }
 
 
 
@@ -116,7 +123,7 @@ export const Cart = () => {
                    </td>
                    <td className="total-col">${calculateTotalPrice(item.price,item.qty)}</td>
                    <td className="remove-col">
-                     <button className="btn-remove">
+                     <button className="btn-remove" onClick={(e)=>removeProduct(item.title)}>
                        <i className="icon-close" />
                      </button>
                    </td>
