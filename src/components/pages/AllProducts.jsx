@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
 import { Products } from '../parts/Products';
+import '../parts/addToCart';
 
 export const AllProducts = () => {
   const params = useParams();

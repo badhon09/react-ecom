@@ -164,7 +164,7 @@ export const Navbar = () => {
                         <nav className="main-nav">
                             <ul className="menu sf-arrows">
                                 <li className="megamenu-container active">
-                                    <a href="index.html" className="sf-with-ul">Home</a>
+                                    <Link to={'/'} className="sf-with-ul">Home</Link>
 
                                     
                                 </li>
