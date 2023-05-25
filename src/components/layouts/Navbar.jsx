@@ -3,6 +3,7 @@ import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { MiniCart } from '../parts/MiniCart';
 import { ToastContainer } from 'react-toastify';
+import { CartContextProvider } from '../../context/CartContext';
 
 export const Navbar = () => {
 
@@ -13,7 +14,7 @@ export const Navbar = () => {
 
 
   return (
-    <>
+    <CartContextProvider>
        
        <header className="header header-intro-clearance header-4">
             <div className="header-top">
@@ -182,7 +183,7 @@ export const Navbar = () => {
             </div>
         </header>
     
-    </>
+    </CartContextProvider>
   )
 
   

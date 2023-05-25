@@ -25,9 +25,15 @@ export const Cart = () => {
   };
 
   const removeProduct = (title) => {
-    if(isItemInCart(title)){
+    //const cartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
+    const updatedCartItems = cartItems.filter(item => item.id !== title);
+// Update the cart items in localStorage
+    localStorage.setItem('cartStorage', JSON.stringify(updatedCartItems));
+    const upcartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
+    setCartItems(upcartItems)
+    // if(isItemInCart(title)){
 
-    }
+    // }
   }
 
 
@@ -123,8 +129,8 @@ export const Cart = () => {
                    </td>
                    <td className="total-col">${calculateTotalPrice(item.price,item.qty)}</td>
                    <td className="remove-col">
-                     <button className="btn-remove" onClick={(e)=>removeProduct(item.title)}>
-                       <i className="icon-close" />
+                     <button className="btn-remove" type='button' >
+                       <i className="icon-close" onClick={(e)=>removeProduct(item.title)}/>
                      </button>
                    </td>
                  </tr>

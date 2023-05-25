@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { CartContext, CartContextProvider } from '../../context/CartContext';
 
 export const MiniCart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -7,17 +8,18 @@ export const MiniCart = () => {
     useEffect(() => {
       const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       setCartItems(storedCartItems);
-      console.log(cartItems);
+      //console.log(cartItems);
     }, []);
 
   return (
+    
     <div className="dropdown-menu dropdown-menu-right">
     <div className="dropdown-cart-products">
         {cartItems.map((items)=>(
         <div className="product" key={items.id}>
             <div className="product-cart-details" key={items.id}>
                 <h4 className="product-title">
-                    <a href="product.html">{items.title}</a>
+                <Link to={'/product-details/'+items.id} >{items.title}</Link>
                 </h4>
 
                 <span className="cart-product-info">
@@ -31,7 +33,7 @@ export const MiniCart = () => {
                     <img src={items.image} alt="product"/>
                 </a>
             </figure>
-            <a href="#" className="btn-remove" title="Remove Product"><i className="icon-close"></i></a>
+            <a href="#" className="btn-remove" title="Remove Product" onClick={()=>{alert('remove')}}><i className="icon-close"></i></a>
         </div>
          ))}
 
@@ -39,7 +41,7 @@ export const MiniCart = () => {
 
     <div className="dropdown-cart-total">
         <span>Total</span>
-
+        
         <span className="cart-total-price">$160.00</span>
     </div>
 
@@ -48,5 +50,6 @@ export const MiniCart = () => {
         <Link to={'/checkout'} className="btn btn-outline-primary-2"><span>Checkout</span><i className="icon-long-arrow-right"></i></Link>
     </div>
 </div>
+
   )
 }

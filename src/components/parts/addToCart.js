@@ -27,6 +27,7 @@ import { toast } from 'react-toastify';
     }
 
     export const isItemInCart = (itemId) => {
+        
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         return cartItems.some((item) => item.title === itemId);
       };
