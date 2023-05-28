@@ -14,7 +14,7 @@ export const Navbar = () => {
 
 
   return (
-    <CartContextProvider>
+   
        
        <header className="header header-intro-clearance header-4">
             <div className="header-top">
@@ -183,7 +183,6 @@ export const Navbar = () => {
             </div>
         </header>
     
-    </CartContextProvider>
   )
 
   
