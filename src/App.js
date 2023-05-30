@@ -3,10 +3,11 @@ import {Home} from './components/pages/Home';
 import { ProductDetails } from "./components/pages/ProductDetails";
 import { Login } from "./components/pages/Login";
 import { AuthContext } from "./context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Checkout } from "./components/pages/Checkout";
 import { AllProducts } from "./components/pages/AllProducts";
 import { Cart } from "./components/pages/Cart";
+import { CartContext } from "./context/CartContext";
 
 function App() {
 
@@ -20,11 +21,20 @@ function App() {
 
     return children;
   };
+  let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
+  let [count, setCount] = useState(cartItems.length)
+
+  useEffect(()=>{
+    
+  },[])
+ 
 
 
 
   return (
     <>
+    <CartContext.Provider value={{cartItems,setCartItems,count,setCount}}>
+
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>} />
@@ -37,6 +47,8 @@ function App() {
      
     </Routes>
     </BrowserRouter>
+    </CartContext.Provider>
+
     </>
   );
 }

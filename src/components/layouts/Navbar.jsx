@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { MiniCart } from '../parts/MiniCart';
 import { ToastContainer } from 'react-toastify';
-import { CartContextProvider } from '../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 export const Navbar = () => {
 
    
     const {data, loading ,error} = useFetch("https://fakestoreapi.com/products/categories");
 
-
+    const {count,setCount} = useContext(CartContext)
 
 
   return (
@@ -129,7 +129,7 @@ export const Navbar = () => {
                             <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div className="icon">
                                     <i className="icon-shopping-cart"></i>
-                                    {/* <span className="cart-count">{cartItems.length ?? 0}</span> */}
+                                    <span className="cart-count">{count ?? 1}</span>
                                 </div>
                                 <p>Cart</p>
                             </a>

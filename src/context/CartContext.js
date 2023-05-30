@@ -9,10 +9,10 @@ export const DECREASE = "DECREASE";
 export const CHECKOUT = "CHECKOUT";
 export const CLEAR = "CLEAR";
 
-export const CartContextProvider = ({Children}) => {
-  return (
-    <CartContext.Provider value={{}}>
-        {Children}
-    </CartContext.Provider>
-  )
-}
+// export const CartContextProvider = ({Children}) => {
+//   return (
+//     <CartContext.Provider value={{}}>
+//         {Children}
+//     </CartContext.Provider>
+//   )
+// }

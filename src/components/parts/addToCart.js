@@ -1,7 +1,9 @@
 
+import { useContext } from 'react';
 import { toast } from 'react-toastify';
 
    export const addCart=(e)=>{
+    
        
         const productId = e.proid;
         const title = e.title;

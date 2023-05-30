@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import { Link } from 'react-router-dom';
 import { isItemInCart } from '../parts/addToCart';
+import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
 
-  let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
+  const {cartItems,setCartItems} = useContext(CartContext)
+  //let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
 
   const handleQuantityChange = (itemId, newQuantity) => {
     alert('eeee')
@@ -23,6 +25,8 @@ export const Cart = () => {
       });
     });
   };
+
+  
 
   const removeProduct = (title) => {
     //const cartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
