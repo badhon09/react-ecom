@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { CartContext, CartContextProvider } from '../../context/cart/CartContext';
 
 export const MiniCart = () => {
-    const [cartItems, setCartItems] = useState([]);
-
-    useEffect(() => {
-      const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(storedCartItems);
-      //console.log(cartItems);
-    }, []);
+    const {cartItems, removeFromCart} = useContext(CartContext);
 
   return (
     
@@ -33,7 +27,7 @@ export const MiniCart = () => {
                     <img src={items.image} alt="product"/>
                 </a>
             </figure>
-            <a href="#" className="btn-remove" title="Remove Product" onClick={()=>{alert('remove')}}><i className="icon-close"></i></a>
+            <a href="#" className="btn-remove" title="Remove Product" onClick={()=>removeFromCart(items)}><i className="icon-close"></i></a>
         </div>
          ))}
 

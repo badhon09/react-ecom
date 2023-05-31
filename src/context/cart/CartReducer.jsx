@@ -42,8 +42,19 @@ export const CartReducer = (state,action) => {
             ...sumItems(state.cartItems),
             cartItems: [...state.cartItems],
             };
+        
+        // If the action type is REMOVE_ITEM, we want to remove the item from the cartItems array
+        case REMOVE_ITEM:
+            return {
+            ...state,
+            ...sumItems(
+                state.cartItems.filter((item) => item.id !== action.payload.id)
+            ),
+            cartItems: [
+                ...state.cartItems.filter((item) => item.id !== action.payload.id),
+            ],
+            };
                 
-            
     
         default:
             break;

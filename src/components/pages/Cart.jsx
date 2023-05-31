@@ -6,40 +6,18 @@ import { CartContext } from '../../context/cart/CartContext';
 
 export const Cart = () => {
 
-  const {cartItems,setCartItems,count,setCount} = useContext(CartContext)
+  const {cartItems,removeFromCart} = useContext(CartContext)
   //let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
 
   const handleQuantityChange = (itemId, newQuantity) => {
-    alert('eeee')
-    setCartItems(prevCartItems => {
-      return prevCartItems.map(item => {
-        if (item.id === itemId) {
-          return {
-            ...item,
-            quantity: newQuantity,
-            price: item.price * newQuantity
-          };
-        }
-        console.log(item)
-        return item;
-      });
-    });
+    
+   
   };
 
   
 
   const removeProduct = (title) => {
-    //alert(cartItems)
-    //const cartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
-    const updatedCartItems = cartItems.filter(item => item.title !== title);
-// Update the cart items in localStorage
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-    const upcartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    setCartItems(upcartItems)
-    setCount(upcartItems.length)
-    // if(isItemInCart(title)){
-
-    // }
+   
   }
 
 
@@ -133,9 +111,9 @@ export const Cart = () => {
                      </div>
                      {/* End .cart-product-quantity */}
                    </td>
-                   <td className="total-col">${calculateTotalPrice(item.price,item.qty)}</td>
+                   <td className="total-col">${calculateTotalPrice(item.price,item.quantity)}</td>
                    <td className="remove-col">
-                    <button type='button' onClick={()=>removeProduct(item.title)}>
+                    <button type='button' onClick={()=>removeFromCart(item)}>
                   cross
                     </button>
                      <button className="btn-remove" type='button' >

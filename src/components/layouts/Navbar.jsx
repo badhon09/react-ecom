@@ -10,7 +10,7 @@ export const Navbar = () => {
    
     const {data, loading ,error} = useFetch("https://fakestoreapi.com/products/categories");
 
-    const {count,setCount} = useContext(CartContext)
+    const {cartItems} = useContext(CartContext)
 
 
   return (
@@ -129,7 +129,7 @@ export const Navbar = () => {
                             <a href="#" className="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div className="icon">
                                     <i className="icon-shopping-cart"></i>
-                                    <span className="cart-count">{count ?? 1}</span>
+                                    <span className="cart-count">{cartItems.length ?? 0}</span>
                                 </div>
                                 <p>Cart</p>
                             </a>
