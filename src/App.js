@@ -7,7 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import { Checkout } from "./components/pages/Checkout";
 import { AllProducts } from "./components/pages/AllProducts";
 import { Cart } from "./components/pages/Cart";
-import { CartContext } from "./context/CartContext";
+import { CartContext } from "./context/cart/CartContext";
+import { CartContextProvider } from "./context/cart/CartContextProvider";
 
 function App() {
 
@@ -24,17 +25,15 @@ function App() {
   let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
   let [count, setCount] = useState(cartItems.length)
 
-  useEffect(()=>{
-    
-  },[])
- 
 
 
 
   return (
     <>
-    <CartContext.Provider value={{cartItems,setCartItems,count,setCount}}>
 
+
+    
+<CartContextProvider>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>} />
@@ -42,12 +41,13 @@ function App() {
       <Route path="/login" element={<Login/>} />
       <Route path="/all-products/:id?" element={<AllProducts/>} />
       <Route path="/cart" element={<Cart/>} />
-      <Route path="/checkout" element={<ProtectedRoute><Checkout/></ProtectedRoute>} />
+      <Route path="/checkout/:details" element={<ProtectedRoute><Checkout/></ProtectedRoute>} />
     
      
     </Routes>
     </BrowserRouter>
-    </CartContext.Provider>
+    </CartContextProvider>
+ 
 
     </>
   );

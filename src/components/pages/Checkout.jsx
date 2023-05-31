@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout } from '../layouts/Layout'
 
-export const Checkout = () => {
+export const Checkout = (details) => {
   return (
     <Layout>
         <main className="main">

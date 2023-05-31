@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import { Link } from 'react-router-dom';
 import { isItemInCart } from '../parts/addToCart';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/cart/CartContext';
 
 export const Cart = () => {
 
-  const {cartItems,setCartItems} = useContext(CartContext)
+  const {cartItems,setCartItems,count,setCount} = useContext(CartContext)
   //let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
 
   const handleQuantityChange = (itemId, newQuantity) => {
@@ -29,12 +29,14 @@ export const Cart = () => {
   
 
   const removeProduct = (title) => {
+    //alert(cartItems)
     //const cartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
-    const updatedCartItems = cartItems.filter(item => item.id !== title);
+    const updatedCartItems = cartItems.filter(item => item.title !== title);
 // Update the cart items in localStorage
-    localStorage.setItem('cartStorage', JSON.stringify(updatedCartItems));
-    const upcartItems = JSON.parse(localStorage.getItem('cartStorage')) || [];
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    const upcartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(upcartItems)
+    setCount(upcartItems.length)
     // if(isItemInCart(title)){
 
     // }
@@ -133,8 +135,11 @@ export const Cart = () => {
                    </td>
                    <td className="total-col">${calculateTotalPrice(item.price,item.qty)}</td>
                    <td className="remove-col">
+                    <button type='button' onClick={()=>removeProduct(item.title)}>
+                  cross
+                    </button>
                      <button className="btn-remove" type='button' >
-                       <i className="icon-close" onClick={(e)=>removeProduct(item.title)}/>
+                       <i className="icon-close" />
                      </button>
                    </td>
                  </tr>

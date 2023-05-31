@@ -3,7 +3,7 @@ import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { MiniCart } from '../parts/MiniCart';
 import { ToastContainer } from 'react-toastify';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/cart/CartContext';
 
 export const Navbar = () => {
 

@@ -1,12 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import { addCart } from './addToCart';
+import { CartContext } from '../../context/cart/CartContext';
 
 export const Products = (item) => {
 
   const {data,loading,error} = useFetch('https://fakestoreapi.com/products');
+
+  const {addToCart} =  useContext(CartContext);
    
 
   return (
@@ -38,7 +41,7 @@ export const Products = (item) => {
           <div className="product-action">
             <a  href="#" id="cart-btn" className="btn-product btn-cart" 
             proid={item.id} title={item.title} image={item.image} price={item.price} 
-            onClick={(e) => addCart(item)}>
+            onClick={(e) => addToCart(item)}>
               <span>add to cart</span>
             </a>
           </div>

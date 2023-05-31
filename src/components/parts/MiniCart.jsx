@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { CartContext, CartContextProvider } from '../../context/CartContext';
+import { CartContext, CartContextProvider } from '../../context/cart/CartContext';
 
 export const MiniCart = () => {
     const [cartItems, setCartItems] = useState([]);
