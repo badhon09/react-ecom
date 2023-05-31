@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Layout } from '../layouts/Layout'
 import useFetch from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom';
+import { CartContext } from '../../context/cart/CartContext';
 
 export const ProductDetails = () => {
     // Get ID from URL
     const params = useParams();
+    const inputQty = useRef(null);
     const {data,loading,error} = useFetch('https://fakestoreapi.com/products/'+params.id)
+    const {addToCart} = useContext(CartContext);
+
+    let [newItem,setNewItem] = useState(data);
+
+    const handleCart = (item) => {
+
+      const newDataObject = { ...item, qty: 2 };
+      addToCart(newDataObject)
+      
+    }
 
   return (
     <Layout>
@@ -215,7 +227,7 @@ export const ProductDetails = () => {
               </div>
               {/* End .details-filter-row */}
               <div className="product-details-action">
-                <a href="#" className="btn-product btn-cart">
+                <a href="#" className="btn-product btn-cart" onClick={()=>handleCart(data)}>
                   <span>add to cart</span>
                 </a>
                 {/* <div className="details-action-wrapper">

@@ -30,7 +30,7 @@ export const CartReducer = (state,action) => {
             if (!state.cartItems.find((item) => item.id === action.payload.id)) {
             state.cartItems.push({
                 ...action.payload,
-                quantity: 1,
+                quantity: action.payload.qty ?? 1,
             });
             toast.success("Added in cart !", {
                 position: toast.POSITION.TOP_CENTER

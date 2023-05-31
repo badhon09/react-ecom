@@ -3,11 +3,13 @@ import { Layout } from '../layouts/Layout'
 import { Link } from 'react-router-dom';
 import { isItemInCart } from '../parts/addToCart';
 import { CartContext } from '../../context/cart/CartContext';
+import { sumItems } from '../../context/cart/CartReducer';
 
 export const Cart = () => {
 
   const {cartItems,removeFromCart} = useContext(CartContext)
   //let [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
+  let {itemCount , total} = sumItems(cartItems)
 
   const handleQuantityChange = (itemId, newQuantity) => {
     
@@ -104,7 +106,7 @@ export const Cart = () => {
                          className="form-control"
                          defaultValue={1}
                          min={1}
-                 
+                        value={item.quantity}
                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
   
                        />
@@ -113,10 +115,8 @@ export const Cart = () => {
                    </td>
                    <td className="total-col">${calculateTotalPrice(item.price,item.quantity)}</td>
                    <td className="remove-col">
-                    <button type='button' onClick={()=>removeFromCart(item)}>
-                  cross
-                    </button>
-                     <button className="btn-remove" type='button' >
+                   
+                     <button className="btn-remove" type='button' onClick={()=>removeFromCart(item)} >
                        <i className="icon-close" />
                      </button>
                    </td>
@@ -168,7 +168,7 @@ export const Cart = () => {
                 <tbody>
                   <tr className="summary-subtotal">
                     <td>Subtotal:</td>
-                    <td>$160.00</td>
+                    <td>${total}</td>
                   </tr>
                   {/* End .summary-subtotal */}
                   <tr className="summary-shipping">

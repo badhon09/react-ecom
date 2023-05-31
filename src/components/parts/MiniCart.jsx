@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { CartContext, CartContextProvider } from '../../context/cart/CartContext';
+import { sumItems } from '../../context/cart/CartReducer';
 
 export const MiniCart = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
-
+    let {itemCount , total} = sumItems(cartItems)
   return (
     
     <div className="dropdown-menu dropdown-menu-right">
@@ -17,7 +18,7 @@ export const MiniCart = () => {
                 </h4>
 
                 <span className="cart-product-info">
-                    <span className="cart-product-qty">1</span>
+                    <span className="cart-product-qty">{items.quantity}</span>
                     x ${items.price}
                 </span>
             </div>
@@ -36,7 +37,7 @@ export const MiniCart = () => {
     <div className="dropdown-cart-total">
         <span>Total</span>
         
-        <span className="cart-total-price">$160.00</span>
+        <span className="cart-total-price">${total}</span>
     </div>
 
     <div className="dropdown-cart-action">
