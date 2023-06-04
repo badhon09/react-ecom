@@ -14,8 +14,10 @@ export const ProductDetails = () => {
     let [newItem,setNewItem] = useState(data);
 
     const handleCart = (item) => {
-
-      const newDataObject = { ...item, qty: 2 };
+      let qty = document.getElementById('qty')
+      let qtyVal = qty.value;
+     // alert(qtyVal);
+      const newDataObject = { ...item, qty: qtyVal };
       addToCart(newDataObject)
       
     }

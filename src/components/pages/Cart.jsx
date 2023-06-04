@@ -22,6 +22,7 @@ export const Cart = () => {
    
   }
 
+const plusBtn = document.getElementsByClassName('btn-increment')
 
 
   let calculateTotalPrice = (price,qty) => {
@@ -254,12 +255,12 @@ export const Cart = () => {
                 </tbody>
               </table>
               {/* End .table table-summary */}
-              <a
-                href="checkout.html"
+              <Link
+                to={"/checkout/"+total}
                 className="btn btn-outline-primary-2 btn-order btn-block"
               >
                 PROCEED TO CHECKOUT
-              </a>
+              </Link>
             </div>
             {/* End .summary */}
             <a
